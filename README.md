@@ -1,5 +1,6 @@
 # atmail
-aiteung email helper for gmail
+aiteung email helper for gmail. Authentication using access token token.json
+
 
 
 ## Example sending email
