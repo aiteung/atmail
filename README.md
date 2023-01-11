@@ -2,7 +2,6 @@
 aiteung email helper for gmail. Authentication using access token token.json
 
 
-
 ## Example sending email
 
 
@@ -64,4 +63,16 @@ func main() {
 
 }
 
+```
+
+
+## Dev
+set env 
+
+GOPROXY=proxy.golang.org
+
+```sh
+git tag v0.0.1
+git push origin --tags
+go list -m github.com/aiteung/atmail@v0.0.1
 ```
