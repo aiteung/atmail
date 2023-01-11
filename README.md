@@ -16,7 +16,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/aiteung/atmq/helper"
+	"github.com/aiteung/atmail"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/gmail/v1"
 	"google.golang.org/api/option"
@@ -34,7 +34,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Unable to parse client secret file to config: %v", err)
 	}
-	client := helper.GetClient(config)
+	client := atmail.GetClient(config)
 
 	srv, err := gmail.NewService(ctx, option.WithHTTPClient(client))
 	if err != nil {
