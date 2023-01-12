@@ -11,7 +11,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-func GenerateGmailMessage(msg EmailMessage) string {
+func Base64Message(msg EmailMessage) string {
 	boundary := randStr(32, "alphanum")
 
 	messageBody := []byte("Content-Type: multipart/mixed; boundary=" + boundary + " \n" +
