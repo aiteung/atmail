@@ -48,7 +48,7 @@ func main() {
 
 	srv := atmail.GetGmailService("client_secret.json", "token.json", gmail.GmailSendScope)
 	var message gmail.Message
-	message.Raw = atmail.GenerateGmailMessage(*msg)
+	message.Raw = atmail.Base64Message(*msg)
 	// Send the message
 	resp, err := srv.Users.Messages.Send("me", &message).Do()
 	if err != nil {
