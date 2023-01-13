@@ -20,7 +20,8 @@ type Success struct {
 }
 
 type Queue struct {
-	Session string   `json:"session,omitempty" bson:"session,omitempty"`
-	Scope   []string `json:"scope,omitempty" bson:"scope,omitempty"`
-	Base64  string   `json:"base64,omitempty" bson:"base64,omitempty"`
+	Session  string   `json:"session,omitempty" bson:"session,omitempty"`
+	Function string   `json:"function,omitempty" bson:"function,omitempty"`
+	Scope    []string `json:"scope,omitempty" bson:"scope,omitempty"`
+	Base64   string   `json:"base64,omitempty" bson:"base64,omitempty"`
 }
