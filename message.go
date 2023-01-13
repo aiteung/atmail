@@ -1,6 +1,11 @@
 package atmail
 
-import "crypto/rand"
+import (
+	"crypto/rand"
+	"encoding/base64"
+	"fmt"
+	"net/http"
+)
 
 func generateAttachmentsMessage(attachments []FileAttachment, boundary string) (content string) {
 	content = ""
@@ -52,4 +57,23 @@ func chunkSplit(body string, limit int, end string) string {
 
 	}
 	return result
+}
+
+func SetMIMEandNameifEmpty(msg *EmailMessage) {
+	for i, attachment := range msg.Attachments {
+		if attachment.MIMEType == "" {
+			msg.Attachments[i].MIMEType = getMIMETypefromBase64(attachment.Base64)
+		}
+		if attachment.Name == "" {
+			msg.Attachments[i].Name = "Attachment"
+		}
+	}
+}
+
+func getMIMETypefromBase64(base64str string) string {
+	fileBytes, err := base64.StdEncoding.DecodeString(base64str)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return http.DetectContentType(fileBytes)
 }
