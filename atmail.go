@@ -30,7 +30,7 @@ func Base64Message(msg EmailMessage) string {
 	return base64.URLEncoding.EncodeToString(messageBody)
 }
 
-func GetGmailService(secret string, accesstokenfile string, scope ...string) (srv *gmail.Service) {
+func GetGmailService(secret string, accesstokenfile string, scope ...string) (srv *gmail.Service, err error) {
 	ctx := context.Background()
 	b, err := os.ReadFile(secret)
 	if err != nil {
@@ -45,8 +45,5 @@ func GetGmailService(secret string, accesstokenfile string, scope ...string) (sr
 	client := getClient(config, accesstokenfile)
 
 	srv, err = gmail.NewService(ctx, option.WithHTTPClient(client))
-	if err != nil {
-		log.Fatalf("Unable to retrieve Gmail client: %v", err)
-	}
-	return srv
+	return srv, err
 }
