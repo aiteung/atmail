@@ -1,5 +1,7 @@
 package atmail
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type FileAttachment struct {
 	MIMEType string `json:"mimetype,omitempty" bson:"mimetype,omitempty"`
 	Name     string `json:"name,omitempty" bson:"name,omitempty"`
@@ -15,13 +17,15 @@ type EmailMessage struct {
 }
 
 type Success struct {
-	LabelIds []string `json:"labels,omitempty" bson:"labels,omitempty"`
-	Queue    Queue    `json:"queue,omitempty" bson:"queue,omitempty"`
+	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	LabelIds []string           `json:"labels,omitempty" bson:"labels,omitempty"`
+	Queue    Queue              `json:"queue,omitempty" bson:"queue,omitempty"`
 }
 
 type Queue struct {
-	Session  string   `json:"session,omitempty" bson:"session,omitempty"`
-	Function string   `json:"function,omitempty" bson:"function,omitempty"`
-	Scope    []string `json:"scope,omitempty" bson:"scope,omitempty"`
-	Base64   string   `json:"base64,omitempty" bson:"base64,omitempty"`
+	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	Session  string             `json:"session,omitempty" bson:"session,omitempty"`
+	Function string             `json:"function,omitempty" bson:"function,omitempty"`
+	Scope    []string           `json:"scope,omitempty" bson:"scope,omitempty"`
+	Base64   string             `json:"base64,omitempty" bson:"base64,omitempty"`
 }
